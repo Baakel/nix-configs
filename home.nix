@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -6,7 +6,11 @@
   home.username = "baakel";
   home.homeDirectory = "/home/baakel";
   targets.genericLinux.enable = true;
-  
+
+  # programs.transmission = {
+  #   enable = true;
+  # };
+  #
   programs.git = {
     enable = true;
     userEmail = "thrauglor@gmail.com";
@@ -26,7 +30,11 @@
 
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
+    # enableCompletion = true;
+
+    envExtra = ''
+      COLORTERM=truecolor
+    '';
     initExtra = ''
 	source $HOME/.cargo/env
 	function sudo_with_env() {
@@ -41,11 +49,15 @@
       share = true;
     };
 
-    prezto = {
+    oh-my-zsh = {
       enable = true;
-      caseSensitive = false;
-      color = true;
     };
+
+    # prezto = {
+    #   enable = true;
+    #   caseSensitive = false;
+    #   # color = true;
+    # };
 
     syntaxHighlighting = {
       enable = true;
@@ -67,26 +79,94 @@
   programs.starship = {
     enable = true;
     settings = {
-      
+     format = lib.concatStrings [
+       "[](color_orange)"
+       "$os"
+       "$username"
+       "[](bg:color_yellow fg:prev_bg)"
+       "$directory"
+       "$git_branch"
+       "$git_status"
+       "[](fg:color_aqua bg:color_blue)"
+       "$python"
+       "[](fg:color_blue bg:color_bg3)"
+       "$docker_context"
+       "[](fg:color_bg3 bg:color_bg1)"
+       "[ ](fg:color_bg1)"
+       "$fill"
+       "$jobs"
+       "$line_break"
+       "$character"
+     ];
+     # right_format = lib.concatStrings [
+     #   "$time"
+     #   "$rust"
+     # ];
+
+     line_break = {
+       disabled = false;
+     };
+
+     fill = {
+       symbol = " ";
+     };
+
+     palette = "gruvbox_dark";
+
+     palettes = {
+       gruvbox_dark = {
+         color_fg0 = "#fbf1c7";
+	 color_bg1 = "#3c3836";
+	 color_bg3 = "#665c54";
+	 color_blue = "#458588";
+	 color_aqua = "#689d6a";
+	 color_green = "#98971a";
+	 color_orange = "#d65d0e";
+	 color_purple = "#b16286";
+	 color_red = "#cc241d";
+	 color_yellow = "#d79921";
+       };
+     };
+
+     os = {
+       disabled = false;
+       style = "bg:color_orange fg:color_fg0";
+     };
+
+     rust = {
+       symbol = "";
+       style = "bg:color_orange";
+       format = "[[ $symbol( $version) ](fg:color_fg0 bg:color_orange)]($style)";
+     };
+
+     time = {
+       disabled = false;
+     };
     };
+
   };
 
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    plugins = [
-	#      { plugin = "gruvbox-material";
-	#        config = ''
-	#   priority = 1000,
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    extraLuaConfig = lib.fileContents ./nvim_configs/init.lua;
+	#    plugins = with pkgs.vimPlugins; [
+	#        { plugin = gruvbox-material;
+	#   config = ''
+	#   # priority = 1000,
 	#   config = funtion()
 	#     vim.g.gruvbox_material_foreground = 'mix'
 	#     vim.g.gruvbox_material_background = 'hard'
 	#     vim.g.gruvbox_material_better_ferformance = 1
 	#     vim.cmd.colorscheme 'gruvbox-material'
 	#   end,
-	# '';
-	#      }
-    ];
+	#   '';
+	# }
+    # ];
   };
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -107,6 +187,7 @@
     pkgs.atuin
     pkgs.starship
     pkgs.qbittorrent
+    pkgs.transmission_4-qt
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
