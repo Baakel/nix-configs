@@ -1,6 +1,6 @@
 --- This sets the leader to space, MUST happen before any plugns load to inherit
 vim.g.mapleader = ' '
-vim.g.maploalleader = ' '
+vim.g.maplocalleader = ' '
 
 
 --- This installs lazy plugin manager. It declares a local var called lazypath, apparently it appends it to the standard path called 'data'
@@ -46,6 +46,21 @@ require('lazy').setup({
     },
   },
 
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = "ibl",
+    ---@module "ibl"
+    ---@type ibl.config
+    opts = {
+      indent = {
+        char = '┊',
+      },
+      whitespace = {
+        remove_blankline_trail = false,
+      },
+    },
+  },
+
 }, {})
 
 -- set highlight on search
@@ -82,4 +97,17 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: check that your terminal supports this
 vim.o.termguicolors = true
+
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
 
