@@ -113,7 +113,7 @@
 
       cmd_duration = {
         min_time = 800;
-        show_milliseconds = true;
+        show_milliseconds = false;
         format = "[](bg:prev_bg fg:color_purple)[ $duration  ]($style)";
         style = "bg:color_purple fg:color_bg1";
       };
@@ -164,7 +164,7 @@
         renamed = "[󰑕$count ](fg:color_yellow bg:color_bg1)";
         deleted = "[󰗨$count ](fg:color_red bg:color_bg1)";
         style = "fg:color_green bg:color_bg1";
-        format = "[ ](fg:prev_bg bg:color_bg1)([$all_status$ahead_behind]($style))";
+        format = "([ ](fg:prev_bg bg:color_bg1)[$all_status$ahead_behind]($style))";
       };
 
       jobs = {
@@ -218,6 +218,7 @@
         style_user = "fg:color_aqua bg:color_bg1";
 	style_root = "fg:color_red bg:color_bg1";
 	format = "[](bg:color_bg1 fg:prev_bg)[ $user ]($style)";
+        show_always = true;
       };
     };
 
