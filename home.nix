@@ -34,6 +34,7 @@
 
     envExtra = ''
       COLORTERM=truecolor
+      PATH=/nix/var/nix/profiles/default/bin:$PATH
     '';
     initExtra = ''
 	source $HOME/.cargo/env
@@ -89,6 +90,7 @@
         "$git_status"
         "[](fg:prev_bg)"
         "$fill"
+        "$nix_shell"
         "$cmd_duration"
         "$jobs"
         "$rust"
@@ -149,7 +151,7 @@
 
       git_state = {
         style = "fg:color_fg0 bg:color_red";
-        format = "[ ](fg:prev_bg bg:color_red)";
+        format = "[ ](fg:prev_bg bg:color_red)[$state( $progress_current/$progress_total)]($style)";
       };
 
       git_status = {
@@ -171,6 +173,13 @@
         format = "[](fg:color_bg1 bg:prev_bg)[ $symbol$number ]($style)";
         style = "bg:color_bg1 fg:color_blue";
         symbol = "󰚌";
+      };
+
+      nix_shell = {
+        format = "[](fg:color_bg1 bg:prev_bg)[ $symbol$state(\($name\)) ]($style)";
+        style = "bg:color_bg1 fg:color_purple";
+        symbol = "󱄅";
+        heuristic = true;
       };
 
       palette = "gruvbox_dark";
