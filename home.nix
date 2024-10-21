@@ -30,7 +30,7 @@
 
   programs.zsh = {
     enable = true;
-    # enableCompletion = true;
+    enableCompletion = true;
 
     envExtra = ''
       COLORTERM=truecolor
@@ -99,10 +99,10 @@
         "$line_break"
         "$character"
       ];
-      # right_format = lib.concatStrings [
-      #   "$time"
-      #   "$rust"
-      # ];
+
+      right_format = lib.concatStrings [
+        "$status"
+      ];
 
       character = {
         success_symbol = "[❯](fg:color_green)";
@@ -215,6 +215,19 @@
         symbol = "";
         style = "bg:color_orange";
         format = "[](fg:color_orange bg:prev_bg)[[ $symbol( $version) ](fg:color_fg0 bg:color_orange)]($style)";
+      };
+      
+      status = {
+        symbol = "";
+        not_executable_symbol = "";
+        not_found_symbol = "󰈈";
+        sigint_symbol = "󰭿";
+        signal_symbol = "󰚩";
+        format = "[$symbol $status:$signal_name(\($common_meaning\))]($style)";
+        style = "fg:color_red";
+        map_symbol = true;
+        pipestatus = true;
+        disabled = false;
       };
 
       time = {
