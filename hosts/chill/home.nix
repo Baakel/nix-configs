@@ -340,6 +340,7 @@
   };
 
   home.shellAliases = {
+    # Put the vars related to this env here
     hms = "home-manager switch";
     vim = "nvim";
     ehm = "nvim ~/.config/home-manager/home.nix";

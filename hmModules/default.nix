@@ -10,4 +10,15 @@
   ];
 
   fzfModule.enable = true;
+
+  home.shellAliases = {
+    hms = "home-manager switch";
+    vim = "nvim";
+    ehm = "nvim ~/.config/home-manager/home.nix";
+    sudo = "sudo_with_env";
+    nix-clean = "nix-collect-garbage -d";
+    szsh = "source ~/.zshrc";
+    ls = "eza";
+    gp = "git push";
+  };
 }
