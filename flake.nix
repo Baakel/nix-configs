@@ -10,7 +10,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -22,12 +22,15 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ 
-          ./hosts/chill/home.nix
+          ./hosts/work/home.nix
           ./hmModules
         ];
+
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };
+
+      # hmModules.default = ./hmModules;
     };
 }
