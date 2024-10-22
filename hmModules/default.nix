@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, specialArgs, ... }:
 
 {
   imports = [
@@ -15,7 +15,7 @@
   batModule.enable = true;
 
   home.shellAliases = {
-    hms = "home-manager switch";
+    hms = "home-manager switch --flake ~/.config/home-manager#${specialArgs.hmProfile}";
     vim = "nvim";
     ehm = "nvim ~/.config/home-manager/home.nix";
     sudo = "sudo_with_env";

@@ -27,6 +27,9 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+        extraSpecialArgs = {
+          hmProfile = "baakel-zima";
+        };
       };
 
       homeConfigurations."EB-HOL-0142" = home-manager.lib.homeManagerConfiguration {
@@ -36,6 +39,10 @@
           ./hosts/work/home.nix
           ./hmModules
         ];
+
+        extraSpecialArgs = {
+          hmProfile = "EB-HOL-0142";
+        };
       };
 
     };
