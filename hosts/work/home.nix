@@ -12,10 +12,7 @@
   # };
   #
   
-  zshModule.enable = true;
-  starshipModule.enable = true;
-  ezaModule.enable = true;
-  batModule.enable = true;
+  fzfModule.enable = true;
 
   programs.git = {
     enable = true;

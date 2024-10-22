@@ -10,7 +10,6 @@
   ];
 
   zshModule.enable = true;
-  fzfModule.enable = false;
   starshipModule.enable = true;
   ezaModule.enable = true;
   batModule.enable = true;
