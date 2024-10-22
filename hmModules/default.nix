@@ -9,7 +9,11 @@
     ./programs/fzf.nix
   ];
 
-  fzfModule.enable = true;
+  zshModule.enable = true;
+  fzfModule.enable = false;
+  starshipModule.enable = true;
+  ezaModule.enable = true;
+  batModule.enable = true;
 
   home.shellAliases = {
     hms = "home-manager switch";
@@ -20,5 +24,6 @@
     szsh = "source ~/.zshrc";
     ls = "eza";
     gp = "git push";
+    gethost = "echo 'this is the host $(hostname)'";
   };
 }

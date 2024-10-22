@@ -15,22 +15,28 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      users.defaultUselShell = pkgs.zsh;
-      homeConfigurations."baakel" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."baakel-zima" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [ 
-          ./hosts/work/home.nix
+          ./hosts/chill/home.nix
           ./hmModules
         ];
-
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };
 
-      # hmModules.default = ./hmModules;
+      homeConfigurations."EB-HOL-0142" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [
+          ./hosts/work/home.nix
+          ./hmModules
+        ];
+      };
+
     };
 }
