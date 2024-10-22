@@ -28,42 +28,42 @@
     };
   };
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-
-    envExtra = ''
-      COLORTERM=truecolor
-      PATH=/nix/var/nix/profiles/default/bin:$PATH
-    '';
-    initExtra = ''
-	source $HOME/.cargo/env
-	function sudo_with_env() {
-	  sudo env PATH=$PATH "$@"
-	}
-    '';
-
-    history = {
-      append = true;
-      size = 10000;
-      ignoreDups = true;
-      share = true;
-    };
-
-    oh-my-zsh = {
-      enable = true;
-    };
-
-    # prezto = {
-    #   enable = true;
-    #   caseSensitive = false;
-    #   # color = true;
-    # };
-
-    syntaxHighlighting = {
-      enable = true;
-    };
-  };
+ #  programs.zsh = {
+ #    enable = true;
+ #    enableCompletion = true;
+	#
+ #    envExtra = ''
+ #      COLORTERM=truecolor
+ #      PATH=/nix/var/nix/profiles/default/bin:$PATH
+ #    '';
+ #    initExtra = ''
+	# source $HOME/.cargo/env
+	# function sudo_with_env() {
+	#   sudo env PATH=$PATH "$@"
+	# }
+ #    '';
+	#
+ #    history = {
+ #      append = true;
+ #      size = 10000;
+ #      ignoreDups = true;
+ #      share = true;
+ #    };
+	#
+ #    oh-my-zsh = {
+ #      enable = true;
+ #    };
+	#
+ #    # prezto = {
+ #    #   enable = true;
+ #    #   caseSensitive = false;
+ #    #   # color = true;
+ #    # };
+	#
+ #    syntaxHighlighting = {
+ #      enable = true;
+ #    };
+ #  };
 
   programs.zoxide = {
     enable = true;
@@ -253,7 +253,7 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraLuaConfig = lib.fileContents ./nvim_configs/init.lua;
+    extraLuaConfig = lib.fileContents ../../nvim_configs/init.lua;
 	#    plugins = with pkgs.vimPlugins; [
 	#        { plugin = gruvbox-material;
 	#   config = ''
