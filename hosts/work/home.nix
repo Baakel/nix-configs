@@ -14,6 +14,8 @@
   
   zshModule.enable = true;
   starshipModule.enable = true;
+  ezaModule.enable = true;
+  batModule.enable = true;
 
   programs.git = {
     enable = true;
@@ -144,6 +146,7 @@
     sudo = "sudo_with_env";
     nix-clean = "nix-collect-garbage -d";
     szsh = "source ~/.zshrc";
+    ls = "eza";
   };
 
   # Let Home Manager install and manage itself.

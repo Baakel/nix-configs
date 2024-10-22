@@ -15,7 +15,6 @@
         PATH=/nix/var/nix/profiles/default/bin:$PATH
       '';
       initExtra = ''
-          source $HOME/.cargo/env
           function sudo_with_env() {
             sudo env PATH=$PATH "$@"
           }
