@@ -7,7 +7,11 @@
 
   config = {
     home.packages = [
-      pkgs.luajitPackages.lua-lsp
+      # pkgs.luajitPackages.lua-lsp
+      pkgs.lua-language-server
+      pkgs.luajitPackages.luarocks
+      pkgs.lua51Packages.lua
+      pkgs.lua51Packages.jsregexp
     ];
   };
 }

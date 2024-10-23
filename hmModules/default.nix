@@ -11,6 +11,7 @@
     ./programs/ripgrep.nix
     ./programs/transmission.nix
     ./programs/make.nix
+    ./programs/node.nix
     ./languageServers
   ];
 
@@ -22,6 +23,7 @@
   btopModule.enable = lib.mkDefault true;
   ripgrepModule.enable = lib.mkDefault true;
   transmissionModule.enable = lib.mkDefault false;
+  nodeModule.enable = lib.mkDefault true;
   makeModule.enable = lib.mkDefault true;
 
   home.shellAliases = {
