@@ -105,6 +105,9 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    ".config/nvim/lua/baakel/set.lua".source = ../../nvim_configs/lua/baakel/set.lua;
+    ".config/nvim/lua/baakel/remaps.lua".source = ../../nvim_configs/lua/baakel/remaps.lua;
+    ".config/nvim/lua/custom/plugins/init.lua".source = ../../nvim_configs/lua/custom/plugins/init.lua;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
