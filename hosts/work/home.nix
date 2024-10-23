@@ -7,12 +7,8 @@
   home.homeDirectory = "/home/baakel";
   targets.genericLinux.enable = true;
   
-  # programs.transmission = {
-  #   enable = true;
-  # };
-  #
-  
   fzfModule.enable = true;
+  transmissionModule.enable = true;
 
   programs.git = {
     enable = true;
@@ -83,8 +79,6 @@
     # pkgs.neovim
     pkgs.atuin
     pkgs.starship
-    # pkgs.qbittorrent
-    # pkgs.transmission_4-qt
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

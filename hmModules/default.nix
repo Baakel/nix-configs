@@ -9,6 +9,7 @@
     ./programs/fzf.nix
     ./programs/btop.nix
     ./programs/ripgrep.nix
+    ./programs/transmission.nix
   ];
 
   zshModule.enable = lib.mkDefault true;
@@ -18,6 +19,7 @@
   fzfModule.enable = lib.mkDefault true;
   btopModule.enable = lib.mkDefault true;
   ripgrepModule.enable = lib.mkDefault true;
+  transmissionModule.enable = lib.mkDefault false;
 
   home.shellAliases = {
     hms = "home-manager switch --flake ~/.config/home-manager#${specialArgs.hmProfile}";
@@ -28,6 +30,5 @@
     szsh = "source ~/.zshrc";
     ls = "eza";
     gp = "git push";
-    gethost = "echo 'this is the host $(hostname)'";
   };
 }
