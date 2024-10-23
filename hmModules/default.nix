@@ -11,6 +11,7 @@
     ./programs/ripgrep.nix
     ./programs/transmission.nix
     ./programs/make.nix
+    ./languageServers
   ];
 
   zshModule.enable = lib.mkDefault true;

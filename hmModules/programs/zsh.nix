@@ -12,7 +12,7 @@
 
       envExtra = ''
         COLORTERM=truecolor
-        PATH=/nix/var/nix/profiles/default/bin:$PATH
+        PATH=/nix/var/nix/profiles/default/bin:/home/baakel/.cargo/bin:$PATH
       '';
       initExtra = ''
           function sudo_with_env() {
