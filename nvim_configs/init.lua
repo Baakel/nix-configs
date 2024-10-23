@@ -43,6 +43,14 @@ require('lazy').setup({
         icons_enabled = true,
 	theme = 'gruvbox-material',
       },
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = { { 'filename', path = 2 } },
+        lualine_x = { 'encoding', 'fileformat', 'filetype' },
+        lualine_y = { 'progress' },
+        lualine_z = { 'location' },
+      },
     },
   },
 
@@ -61,6 +69,75 @@ require('lazy').setup({
     },
   },
 
+  --- LSP plugins, config below. (lspconfig)
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+
+      -- Useful status updates for LSP (The thing at the bottom right)
+      -- `opts = {}` is the same as `require('sth').setup({})`
+      -- Keep the legacy tag to disable warning, but also check from time to time to see if updated already
+      { 'j-hui/fidget.nvim', tag = "legacy", opts = {} },
+
+      {
+        'folke/lazydev.nvim',
+      },
+    },
+  },
+
+  {
+    -- Autocompletion
+    'hrsh7th/nvim-cmp',
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+  },
+
+  -- The one that shows the keybinds that can be used
+  { 'folke/which-key.nvim', opts = {} },
+
+  -- Add git related stuff to the gutter
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      -- We have these set up but lets try the defaults first
+      -- signs = {
+      --   add = { text = '+' },
+      --   change = { text = '~' },
+      --   delete = { text = '_' },
+      --   topdelete = { text = '‾' },
+      --   changedelete = { text = '~' },
+      -- },
+    },
+  },
+  
+  -- Better bindings for gc commenting stuff
+  { 'numToStr/Comment.nvim', opts = {} },
+
+  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    cond = function()
+      return vim.fn.executable 'make' == 1
+    end,
+  },
+
+  -- Highlight, edit, and navigate code
+  {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    config = function()
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
+    end,
+  },
+
+  { 'windwp/nvim-autopairs', opts = {} },
+  { import = 'custom.plugins' },
+
 }, {})
 
 -- set highlight on search
@@ -68,6 +145,9 @@ vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
+
+-- This enables mouse use on nvim but might want to turn off
+-- vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 -- In theory this should work, but is funky
@@ -98,6 +178,20 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: check that your terminal supports this
 vim.o.termguicolors = true
 
+-- [[ Basic Keymaps ]]
+-- I think this one disables space in normal and visual mode (the jump char part)
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+-- This centers the cursor with zz when you do a page down
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+-- Same for page up
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+-- Recenters after jumping to next find and keeps visual selection
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'k'", { expr = true, silent = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -109,5 +203,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+      },
+    },
+  },
+}
+
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')
 
 

@@ -10,6 +10,7 @@
     ./programs/btop.nix
     ./programs/ripgrep.nix
     ./programs/transmission.nix
+    ./programs/make.nix
   ];
 
   zshModule.enable = lib.mkDefault true;
@@ -20,6 +21,7 @@
   btopModule.enable = lib.mkDefault true;
   ripgrepModule.enable = lib.mkDefault true;
   transmissionModule.enable = lib.mkDefault false;
+  makeModule.enable = lib.mkDefault true;
 
   home.shellAliases = {
     hms = "home-manager switch --flake ~/.config/home-manager#${specialArgs.hmProfile}";
