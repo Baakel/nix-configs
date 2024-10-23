@@ -83,8 +83,8 @@
     # pkgs.neovim
     pkgs.atuin
     pkgs.starship
-    pkgs.qbittorrent
-    pkgs.transmission_4-qt
+    # pkgs.qbittorrent
+    # pkgs.transmission_4-qt
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

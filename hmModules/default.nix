@@ -7,12 +7,17 @@
     ./programs/eza.nix
     ./programs/bat.nix
     ./programs/fzf.nix
+    ./programs/btop.nix
+    ./programs/ripgrep.nix
   ];
 
-  zshModule.enable = true;
-  starshipModule.enable = true;
-  ezaModule.enable = true;
-  batModule.enable = true;
+  zshModule.enable = lib.mkDefault true;
+  starshipModule.enable = lib.mkDefault true;
+  ezaModule.enable = lib.mkDefault true;
+  batModule.enable = lib.mkDefault true;
+  fzfModule.enable = lib.mkDefault true;
+  btopModule.enable = lib.mkDefault true;
+  ripgrepModule.enable = lib.mkDefault true;
 
   home.shellAliases = {
     hms = "home-manager switch --flake ~/.config/home-manager#${specialArgs.hmProfile}";
