@@ -23,6 +23,7 @@
           "$cmd_duration"
           "$jobs"
           "$rust"
+          "$memory_usage"
           "$time"
           "[ ](fg:prev_bg)"
           "$line_break"
@@ -102,6 +103,14 @@
           format = "[](fg:color_bg1 bg:prev_bg)[ $symbol$number ]($style)";
           style = "bg:color_bg1 fg:color_blue";
           symbol = "󰚌";
+        };
+
+        memory_usage = {
+          threshold = -1;
+          symbol = "󰍛";
+          format = "[](fg:color_aqua bg:prev_bg)[ $ram $symbol ]($style)";
+          disabled = false;
+          style = "fg:color_bg1 bg:color_aqua";
         };
 
         nix_shell = {
