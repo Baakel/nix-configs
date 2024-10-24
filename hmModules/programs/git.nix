@@ -1,4 +1,4 @@
-{ pkgs, lib, config, specialArgs, ... }:
+{ lib, config, specialArgs, ... }:
 
 {
   options = {
@@ -8,7 +8,7 @@
   config = lib.mkIf config.gitModule.enable {
     programs.git = {
       enable = true;
-      userEmail = "thrauglor@gmail.com";
+      userEmail = if specialArgs.hmProfile == "work-vm" then "diego.navarro@dealfront.com" else "thrauglor@gmail.com";
       userName = "baakel";
       extraConfig = {
         core = {

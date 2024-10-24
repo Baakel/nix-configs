@@ -9,6 +9,7 @@
   
   fzfModule.enable = true;
   transmissionModule.enable = true;
+  dustModule.enable = true;
 
   # programs.git = {
   #   enable = true;
