@@ -10,22 +10,22 @@
   fzfModule.enable = true;
   transmissionModule.enable = true;
 
-  programs.git = {
-    enable = true;
-    userEmail = "thrauglor@gmail.com";
-    userName = "baakel";
-    extraConfig = {
-      core = {
-        editor = "nvim";
-      };
-      init = {
-        defaultBranch = "main";
-      };
-      pull = {
-        rebase = true;
-      };
-    };
-  };
+  # programs.git = {
+  #   enable = true;
+  #   userEmail = "thrauglor@gmail.com";
+  #   userName = "baakel";
+  #   extraConfig = {
+  #     core = {
+  #       editor = "nvim";
+  #     };
+  #     init = {
+  #       defaultBranch = "main";
+  #     };
+  #     pull = {
+  #       rebase = true;
+  #     };
+  #   };
+  # };
 
   programs.zoxide = {
     enable = true;

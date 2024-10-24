@@ -385,6 +385,11 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+require('lspconfig').nixd.setup{
+  capabilities = capabilities,
+  an_attach = on_attach,
+}
+
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
