@@ -85,8 +85,8 @@
         };
 
         git_status = {
-          ahead = "[$count ](fg:color_green bg:color_bg1)";
-          behind = "[$count ](fg:color_green bg:color_bg1)";
+          ahead = "[󰈸$count ](fg:color_green bg:color_bg1)";
+          behind = "[$count ](fg:color_green bg:color_bg1)";
           conflicted = "[$count ](fg:color_red bg:color_bg1)";
           untracked = "[$count ](fg:color_blue bg:color_bg1)";
           diverged = "[󰦻$count ](fg:color_purple bg:color_bg1)";
