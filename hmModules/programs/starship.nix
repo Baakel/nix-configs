@@ -79,6 +79,13 @@
           style = "fg:color_bg1 bg:color_aqua";
         }; 
 
+        git_commit = {
+          format = "[ ](fg:prev_bg bg:color_green)[󰜘 $hash $tag$tag_symbol]($style)";
+          tag_disabled = true;
+          tag_symbol = "󰓹 ";
+          style = "fg:color_bg1 bg:color_green";
+        };
+
         git_state = {
           style = "fg:color_fg0 bg:color_red";
           format = "[ ](fg:prev_bg bg:color_red)[$state( $progress_current/$progress_total)]($style)";

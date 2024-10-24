@@ -12,6 +12,7 @@
     ./programs/transmission.nix
     ./programs/make.nix
     ./programs/node.nix
+    ./programs/sysstat.nix
     ./languageServers
   ];
 
@@ -25,6 +26,7 @@
   transmissionModule.enable = lib.mkDefault false;
   nodeModule.enable = lib.mkDefault true;
   makeModule.enable = lib.mkDefault true;
+  sysstatModule.enable = lib.mkDefault true;
 
   home.shellAliases = {
     hms = "home-manager switch --flake ~/.config/home-manager#${specialArgs.hmProfile}";

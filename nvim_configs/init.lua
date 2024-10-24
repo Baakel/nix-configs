@@ -26,7 +26,7 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
   {
-    'sainhe/gruvbox-material',
+    'sainnhe/gruvbox-material',
     priority = 1000,
     config = function()
       vim.g.gruvbox_material_foreground = 'mix'
@@ -251,7 +251,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- Treesitter configs
 require('nvim-treesitter.configs').setup {
   -- Add languages that you want in treesitter
-  ensure_installed = { 'bash', 'c', 'cpp', 'css', 'dockerfile', 'go', 'helm', 'html', 'javascript', 'json', 'kotlin', 'lua', 'markdown', 'nginx', 'nix', 'proto', 'python', 'regex', 'rust', 'sql', 'ssh_config', 'svelte', 'toml', 'tsx', 'typescript', 'yaml', 'vim' },
+  ensure_installed = { 'bash', 'c', 'cpp', 'css', 'dockerfile', 'go', 'html', 'javascript', 'json', 'kotlin', 'lua', 'markdown', 'nix', 'proto', 'python', 'regex', 'rust', 'sql', 'svelte', 'toml', 'tsx', 'typescript', 'yaml', 'vim' },
 
   auto_install = true,
 
