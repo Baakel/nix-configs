@@ -14,6 +14,7 @@
           "$os"
           "$username"
           "$directory"
+          "$\{custom.git_symbol\}"
           "$git_branch"
           "$git_commit"
           "$git_status"
@@ -74,7 +75,8 @@
         };
 
         git_branch = {
-          format = "[ ](fg:prev_bg bg:color_aqua)[$symbol$branch(:$remote_branch) ]($style)";
+          # format = "[ ](fg:prev_bg bg:color_aqua)[$symbol$branch(:$remote_branch) ]($style)";
+          format = "[ $symbol$branch(:$remote_branch) ]($style)";
           symbol = " ";
           style = "fg:color_bg1 bg:color_aqua";
         }; 
@@ -115,7 +117,7 @@
         memory_usage = {
           threshold = -1;
           symbol = "󰍛";
-          format = "[](fg:color_aqua bg:prev_bg)[ $ram $symbol ]($style)";
+          format = "[](fg:color_aqua bg:prev_bg)[ $ram_pct $symbol ]($style)";
           disabled = false;
           style = "fg:color_bg1 bg:color_aqua";
         };
@@ -187,8 +189,22 @@
           format = "[](bg:color_bg1 fg:prev_bg)[ $user ]($style)";
           show_always = true;
         };
+
+        custom = {
+          git_symbol = {
+            command = "~/.config/starship/git_symbol.sh";
+            require_repo = true;
+            detect_folders = [".git"];
+            format = "[ ](bg:color_aqua fg:prev_bg)[$output]($style)";
+            style = "fg:color_bg1 bg:color_aqua";
+          };
+        };
       };
 
+    };
+
+    home.file = {
+      ".config/starship/git_symbol.sh".source = ../../hmModules/programs/starship/git_symbol.sh;
     };
   };
 }
