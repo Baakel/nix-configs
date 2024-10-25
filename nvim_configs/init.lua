@@ -266,6 +266,8 @@ require('nvim-treesitter.configs').setup {
       node_decremental = '<M-w>',
     },
   },
+  sync_install = false,
+  ignore_install = {},
   textobjects = {
     select = {
       enable = true,
