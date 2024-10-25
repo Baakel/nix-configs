@@ -391,7 +391,7 @@ local hm_profile = os.getenv("HM_PROFILE")
 local home_dir = os.getenv("HOME")
 require('lspconfig').nixd.setup{
   capabilities = capabilities,
-  an_attach = on_attach,
+  on_attach = on_attach,
   settings = {
     nixd = {
       nixpkgs = {
