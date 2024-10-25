@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... } : {
+{ pkgs, lib, config, specialArgs, ... } : {
 
   options = {
     zshModule.enable = lib.mkEnableOption "enables zshModule";
@@ -13,6 +13,7 @@
       envExtra = ''
         COLORTERM=truecolor
         PATH=/nix/var/nix/profiles/default/bin:/home/baakel/.cargo/bin:$PATH
+        HM_PROFILE=${specialArgs.hmProfile}
       '';
       initExtra = ''
           function sudo_with_env() {

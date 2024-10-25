@@ -387,9 +387,27 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+local hm_profile = os.getenv("HM_PROFILE")
+local home_dir = os.getenv("HOME")
 require('lspconfig').nixd.setup{
   capabilities = capabilities,
   an_attach = on_attach,
+  settings = {
+    nixd = {
+      nixpkgs = {
+        -- expr = "import <nixpkgs> { }",
+        expr = 'import (builtins.getFlake "' .. home_dir .. '/.config/home-manager").inputs.nixpkgs { }',
+      },
+      formatting = {
+        command = { "nixfmt" },
+      },
+      options = {
+        home_manager = {
+          expr = '(builtins.getFlake "' .. home_dir .. '/.config/home-manager").homeConfigurations.' .. hm_profile .. '.options',
+        },
+      },
+    },
+  },
 }
 
 local cmp = require 'cmp'

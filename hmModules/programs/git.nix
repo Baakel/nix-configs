@@ -9,7 +9,7 @@
     programs.git = {
       enable = true;
       userEmail = if specialArgs.hmProfile == "work-vm" then "diego.navarro@dealfront.com" else "thrauglor@gmail.com";
-      userName = "baakel";
+      userName = if specialArgs.hmProfile == "work-vm" then "dnavarro" else "baakel";
       extraConfig = {
         core = {
           editor = "nvim";

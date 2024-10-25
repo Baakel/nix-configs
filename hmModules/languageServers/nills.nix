@@ -8,6 +8,7 @@
   config = lib.mkIf config.nillsModule.enable {
     home.packages = [
       pkgs.nixd
+      pkgs.nixfmt
     ];
   };
 }
