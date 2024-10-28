@@ -149,6 +149,7 @@ require('lazy').setup({
   },
 
   { 'windwp/nvim-autopairs', opts = {} },
+  { 'nvim-tree/nvim-web-devicons', opts = {} },
   { import = 'custom.plugins' },
 
 }, {})
