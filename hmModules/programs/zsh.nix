@@ -13,7 +13,6 @@
       envExtra = ''
         COLORTERM=truecolor
         PATH=/nix/var/nix/profiles/default/bin:/home/baakel/.cargo/bin:$PATH
-        HM_PROFILE=${specialArgs.hmProfile}
       '';
       initExtra = ''
           function sudo_with_env() {
