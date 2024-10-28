@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, specialArgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -135,6 +135,7 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
     EDITOR = "nvim";
+    HM_PROFILE = specialArgs.hmProfile;
   };
 
   home.shellAliases = {
