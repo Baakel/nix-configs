@@ -15,6 +15,7 @@
     ./programs/sysstat.nix
     ./programs/git.nix
     ./programs/dust.nix
+    ./programs/fd.nix
     ./languageServers
   ];
 
@@ -31,6 +32,7 @@
   sysstatModule.enable = lib.mkDefault true;
   gitModule.enable = lib.mkDefault true;
   dustModule.enable = lib.mkDefault false;
+  fdModule.enable = lib.mkDefault false;
 
   home.shellAliases = {
     hms = "home-manager switch --flake ~/.config/home-manager#${specialArgs.hmProfile}";
